@@ -15,8 +15,12 @@ function ToastProvider({ children }) {
     setToasts(toasts.filter((toast) => toast.id !== id));
   };
 
+  const resetToasts = () => setToasts([]);
+
   return (
-    <ToastContext.Provider value={{ createToast, deleteToast, toasts }}>
+    <ToastContext.Provider
+      value={{ createToast, deleteToast, toasts, resetToasts }}
+    >
       {children}
     </ToastContext.Provider>
   );

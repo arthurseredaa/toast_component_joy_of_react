@@ -9,7 +9,7 @@ import { useToast } from "../ToastProvider";
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
 function ToastPlayground() {
-  const { createToast } = useToast();
+  const { createToast, toasts } = useToast();
   const [error, setError] = React.useState("");
 
   const [message, setMessage] = React.useState("");
@@ -45,7 +45,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf />
+      {!!toasts?.length && <ToastShelf />}
 
       <form onSubmit={handleSubmit}>
         <div className={styles.controlsWrapper}>
