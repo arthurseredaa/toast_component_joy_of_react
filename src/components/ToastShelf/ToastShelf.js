@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Toast from "../Toast";
 import styles from "./ToastShelf.module.css";
@@ -6,21 +6,7 @@ import { useToast } from "../ToastProvider";
 import VisuallyHidden from "../VisuallyHidden";
 
 function ToastShelf() {
-  const { toasts, deleteToast, resetToasts } = useToast();
-
-  useEffect(() => {
-    const handleCloseToasts = (e) => {
-      if (e.code === "Escape") {
-        resetToasts();
-      }
-    };
-
-    window.addEventListener("keydown", handleCloseToasts);
-
-    return () => {
-      window.removeEventListener("keydown", handleCloseToasts);
-    };
-  }, [resetToasts]);
+  const { toasts, deleteToast } = useToast();
 
   return (
     <ol
